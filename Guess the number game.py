@@ -1,3 +1,4 @@
+import sys
 import random
 
 def input_number(str):
@@ -13,6 +14,10 @@ def input_number(str):
 
 n = input_number('最小数')
 m = input_number('最大数')
+
+if n > m:
+    print(f"エラー: 最小数{n}が最大数{m}より大きいです。最大数より小さい最小数を入力してください。")
+    sys.exit(1)
 
 correct_answer = random.randint(n, m)
 
