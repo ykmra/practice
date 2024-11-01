@@ -56,20 +56,21 @@ def replace_string(inputpath, needle, newstring):
         f.write(contents.replace(needle, newstring))
 
 
-func_dict = {'reverse': lambda: reverse(sys.argv[2], sys.argv[3]), 'copy': lambda: copy(sys.argv[2], sys.argv[3]), 'duplicate-contents': lambda: duplicate_contents(sys.argv[2], sys.argv[3]), 'replace-string': lambda: replace_string(sys.argv[2], sys.argv[3], sys.argv[4])}
-command = sys.argv[1]
+if __name__ == "__main__":
+    func_dict = {'reverse': lambda: reverse(sys.argv[2], sys.argv[3]), 'copy': lambda: copy(sys.argv[2], sys.argv[3]), 'duplicate-contents': lambda: duplicate_contents(sys.argv[2], sys.argv[3]), 'replace-string': lambda: replace_string(sys.argv[2], sys.argv[3], sys.argv[4])}
+    command = sys.argv[1]
 
-if command in func_dict:
-    if sys.argv[1] == 'replace-string':
-        validate_args_count(3)
+    if command in func_dict:
+        if sys.argv[1] == 'replace-string':
+            validate_args_count(3)
+        else:
+            validate_args_count(2)
+
+        func_dict[command]()
+
     else:
-        validate_args_count(2)
-
-    func_dict[command]()
-
-else:
-    print("エラー: 正しいコマンドを入力して下さい")
-    sys.exit(1)
+        print("エラー: 正しいコマンドを入力して下さい")
+        sys.exit(1)
 
 
 

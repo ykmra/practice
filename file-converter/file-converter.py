@@ -24,9 +24,10 @@ def convert_markdown(inputfile, outpufile):
         f.write(markdown.markdown(contents, extensions=['markdown.extensions.tables']))
 
 
-if sys.argv[1] != 'markdown':
-    print("エラー: 正しいコマンドを入力して下さい")
-    sys.exit(1)
-else:
-    validate_args_count(2)
-    convert_markdown(sys.argv[2], sys.argv[3])
+if __name__ == "__main__":
+    if sys.argv[1] != 'markdown':
+        print("エラー: 正しいコマンドを入力して下さい")
+        sys.exit(1)
+    else:
+        validate_args_count(2)
+        convert_markdown(sys.argv[2], sys.argv[3])
